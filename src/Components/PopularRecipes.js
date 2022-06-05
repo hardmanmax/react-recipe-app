@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import RecipePreview from "./RecipePreview";
+import { Splide, SplideSlide} from '@splidejs/react-splide'
+import '@splidejs/react-splide/css';
+
 
 const PopularRecipes = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -10,7 +14,7 @@ const PopularRecipes = () => {
     if (local){
       setPopularRecipes(JSON.parse(local))
     } else {
-      const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=4`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
       const data = await response.json();
       //console.log(data.recipes);
       setPopularRecipes(data.recipes); 
@@ -23,13 +27,38 @@ const PopularRecipes = () => {
   }, []);
 
   return (
-    <> 
+    <Splide
+    options ={{
+      breakpoints: {
+        600: {
+          perPage: 1,
+        },
+        900: {
+          perPage: 2,
+        },
+        1200: {
+          perPage: 3,
+        },
+        3000: {
+          perPage: 3
+        },
+      },
+      drag: 'free',
+      gap: '2rem',
+      snap: true,
+      rewind: true,
+    }}
+  > 
       {
-        popularRecipes.map((item) => (
-          <h2 key={item.id}>{item.title}</h2>
+        popularRecipes.map((recipe) => (
+          <SplideSlide>
+            <div style={{margin: "2px"}}>
+              <RecipePreview recipe={recipe} />
+            </div>
+          </SplideSlide>
         ))
       }
-    </>
+    </Splide>
   )
 }
 
