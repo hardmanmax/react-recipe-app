@@ -1,7 +1,9 @@
-function App() {
+import Homepage from "./Routes/Homepage";
+
+const App = () => {
   return (
     <>
-      <h1>Hello world</h1>
+      <Homepage />
     </>
     
   );
