@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import RecipePreview from "./RecipePreview";
 import { Splide, SplideSlide} from '@splidejs/react-splide'
 import '@splidejs/react-splide/css';
-
+import { Typography } from "@mui/material";
 
 const PopularRecipes = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -27,38 +27,46 @@ const PopularRecipes = () => {
   }, []);
 
   return (
-    <Splide
-    options ={{
-      breakpoints: {
-        600: {
-          perPage: 1,
+    <>
+      <Typography 
+        variant="h5" 
+        sx={{
+          marginY: '20px'
+        }}>Popular Recipes
+      </Typography>
+      <Splide
+      options ={{
+        breakpoints: {
+          600: {
+            perPage: 1,
+          },
+          900: {
+            perPage: 2,
+          },
+          1200: {
+            perPage: 3,
+          },
+          3000: {
+            perPage: 3
+          },
         },
-        900: {
-          perPage: 2,
-        },
-        1200: {
-          perPage: 3,
-        },
-        3000: {
-          perPage: 3
-        },
-      },
-      drag: 'free',
-      gap: '2rem',
-      snap: true,
-      rewind: true,
-    }}
-  > 
-      {
-        popularRecipes.map((recipe) => (
-          <SplideSlide>
-            <div style={{margin: "2px"}}>
-              <RecipePreview recipe={recipe} />
-            </div>
-          </SplideSlide>
-        ))
-      }
-    </Splide>
+        drag: 'free',
+        gap: '2rem',
+        snap: true,
+        rewind: true,
+      }}
+    > 
+        {
+          popularRecipes.map((recipe) => (
+            <SplideSlide>
+              <div style={{margin: "2px"}}>
+                <RecipePreview recipe={recipe} />
+              </div>
+            </SplideSlide>
+          ))
+        }
+      </Splide>
+    </>
   )
 }
 
