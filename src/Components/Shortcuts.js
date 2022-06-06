@@ -11,21 +11,25 @@ const Shortcuts = () => {
       id: 1,
       icon: <BeachAccessIcon/>,
       title: "Mediterranean",
+      src: "/cuisine/mediterranean"
     }, 
     {
       id: 2,
       icon: <FilterDramaIcon/>,
       title: "British",
+      src: '/cuisine/british'
     }, 
     {
       id: 3,
       icon: <IcecreamIcon/>,
       title: "Italian",
+      src: '/cuisine/italian'
     }, 
     {
       id: 4,
       icon: <SoupKitchenIcon/>,
       title: "Vietnamese",
+      src: '/cuisine/vietnamese'
     }
   ]
 
@@ -46,6 +50,7 @@ const Shortcuts = () => {
             key={category.id}
             startIcon={category.icon}
             variant="outlined"
+            href={category.src}
             sx={{
               color: '#000000', 
               borderColor: '#000000',

@@ -1,11 +1,14 @@
-import Homepage from "./Routes/Homepage";
+import Searchbar from "./Components/Searchbar";
+import Shortcuts from "./Components/Shortcuts";
+import Routing from "./Routes/Routing";
 
 const App = () => {
   return (
     <>
-      <Homepage />
+      <Shortcuts />
+      <Searchbar />
+      <Routing />
     </>
-    
   );
 }
 
