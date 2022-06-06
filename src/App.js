@@ -1,11 +1,9 @@
-import Searchbar from "./Components/Searchbar";
-import Shortcuts from "./Components/Shortcuts";
 import Routing from "./Routes/Routing";
+import Searchbar from "./Components/Searchbar";
 
 const App = () => {
   return (
     <>
-      <Shortcuts />
       <Searchbar />
       <Routing />
     </>
