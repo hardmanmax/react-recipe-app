@@ -58,7 +58,7 @@ const VeganRecipes = () => {
     > 
         {
           veganRecipes.map((recipe) => (
-            <SplideSlide>
+            <SplideSlide key={recipe.id}>
               <div style={{margin: "2px"}}>
                 <RecipePreview recipe={recipe} />
               </div>

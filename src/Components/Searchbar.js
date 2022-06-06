@@ -2,10 +2,13 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom";
 
 const Searchbar = () => {
 
   const [input, setInput] = useState("");
+
+  const navigate = useNavigate();
 
   const inputHandler =(e) => {
     setInput(e.target.value);
@@ -13,7 +16,8 @@ const Searchbar = () => {
 
   const submitHandler =(e) => {
     e.preventDefault();
-    setInput('')
+    navigate("/search/" + input)
+    setInput("");
   }
 
   return (
