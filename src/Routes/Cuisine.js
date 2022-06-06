@@ -40,7 +40,6 @@ const Cuisine = () => {
       <Grid 
         container 
         spacing={{ xs: 2, md: 3 }} 
-        // columns={{ xs: 1, sm: 4, md: 3 }}
       >
         {
           cuisine.map((recipe) => (
