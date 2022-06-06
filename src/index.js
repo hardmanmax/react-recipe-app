@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from "react-router-dom";
-
+import { MyRecipesProvider } from './Context/MyRecipesContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <MyRecipesProvider>
+      <Router>
+        <App />
+      </Router>
+    </MyRecipesProvider>
   </React.StrictMode>
 );
 

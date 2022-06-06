@@ -1,13 +1,14 @@
-import { Tooltip, Fab, Modal, Box, Typography } from '@mui/material'
+import { Tooltip, Fab} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from 'react';
 import NewRecipeForm from './NewRecipeForm';
+import MyRecipesContext from '../../Context/MyRecipesContext';
+import { useContext } from 'react';
 
 const CreateRecipe = () => {
 
-  const [open, setOpen] = useState(false);
+  const {setOpen} = useContext(MyRecipesContext);
+
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -31,14 +32,7 @@ const CreateRecipe = () => {
           />
         </Fab>
       </Tooltip>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <NewRecipeForm />
-      </Modal>
+      <NewRecipeForm />
     </>
   )
 }
