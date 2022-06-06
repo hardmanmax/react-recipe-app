@@ -17,10 +17,13 @@ const Surprise = () => {
   };
 
   const goToRecipe = () => {
+    navigate("/recipe/" + randomPageId);
     getRandomRecipe();
-    navigate("/recipe/" + randomPageId)
-
   }
+
+  useEffect(() => {
+    getRandomRecipe();
+  }, []);
 
   return (
       <Tooltip 
@@ -40,6 +43,7 @@ const Surprise = () => {
         >
           <FontAwesomeIcon 
             icon={faShuffle}
+            style={{height: 25}}
           />
         </Fab>
       </Tooltip>
