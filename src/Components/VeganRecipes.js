@@ -3,6 +3,7 @@ import RecipePreview from "./RecipePreview";
 import { Splide, SplideSlide} from '@splidejs/react-splide'
 import '@splidejs/react-splide/css';
 import { Typography } from "@mui/material";
+import ErrorMsg from "../Components/ErrorMsg";
 
 const VeganRecipes = () => {
   const [veganRecipes, setVeganRecipes] = useState([]);
@@ -28,45 +29,52 @@ const VeganRecipes = () => {
 
   return (
     <>
-      <Typography 
-        variant="h5" 
-        sx={{
-          marginY: '20px'
-        }}>Vegan Recipes
-      </Typography>
-      <Splide
-      options ={{
-        breakpoints: {
-          600: {
-            perPage: 1,
-          },
-          900: {
-            perPage: 2,
-          },
-          1200: {
-            perPage: 3,
-          },
-          3000: {
-            perPage: 3
-          },
-        },
-        drag: 'free',
-        gap: '2rem',
-        snap: true,
-        rewind: true,
-      }}
-    > 
-        {
-          veganRecipes.map((recipe) => (
-            <SplideSlide key={recipe.id}>
-              <div style={{margin: "2px"}}>
-                <RecipePreview recipe={recipe} />
-              </div>
-            </SplideSlide>
-          ))
-        }
-      </Splide>
-    </>
+      { veganRecipes ? (
+        <>
+          <Typography 
+            variant="h5" 
+            sx={{
+              marginY: '20px'
+            }}>Vegan Recipes
+          </Typography>
+          <Splide
+          options ={{
+            breakpoints: {
+              600: {
+                perPage: 1,
+              },
+              900: {
+                perPage: 2,
+              },
+              1200: {
+                perPage: 3,
+              },
+              3000: {
+                perPage: 3
+              },
+            },
+            drag: 'free',
+            gap: '2rem',
+            snap: true,
+            rewind: true,
+          }}
+        > 
+            {
+              veganRecipes.map((recipe) => (
+                <SplideSlide key={recipe.id}>
+                  <div style={{margin: "2px"}}>
+                    <RecipePreview recipe={recipe} />
+                  </div>
+                </SplideSlide>
+              ))
+            }
+          </Splide>
+        </>
+      ) : (
+        <ErrorMsg />
+      )
+    } 
+  </>
   )
 }
 

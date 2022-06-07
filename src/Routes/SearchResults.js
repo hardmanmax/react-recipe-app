@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import RecipePreview from "../Components/RecipePreview";
+import ErrorMsg from "../Components/ErrorMsg";
 
 const SearchResults = () => {
 
@@ -22,23 +23,31 @@ const SearchResults = () => {
 
 
   return (
-    <Box>
-      <Typography variant="h5" my={2}>
-        You searched for "{params.search}":
-      </Typography>
-      <Grid 
-        container 
-        spacing={{ xs: 2, md: 3 }} 
-      >
-        {
-          searchResults.map((recipe) => (
-            <Grid item xs={12} sm={6} md={4} key={recipe.id}>
-              <RecipePreview recipe={recipe}/>
-            </Grid>
-          ))
-        }
-      </Grid>
-    </Box>
+    <>
+      {
+        searchResults ? (
+        <Box>
+          <Typography variant="h5" my={2}>
+            You searched for "{params.search}":
+          </Typography>
+          <Grid 
+            container 
+            spacing={{ xs: 2, md: 3 }} 
+          >
+            {
+              searchResults.map((recipe) => (
+                <Grid item xs={12} sm={6} md={4} key={recipe.id}>
+                  <RecipePreview recipe={recipe}/>
+                </Grid>
+              ))
+            }
+          </Grid>
+        </Box>
+        ) : (
+          <ErrorMsg />
+        )
+      }
+    </>
   )
 }
 

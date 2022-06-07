@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Grid from '@mui/material/Grid';
 import RecipePreview from "../Components/RecipePreview";
 import { Typography } from "@mui/material";
+import ErrorMsg from "../Components/ErrorMsg";
 
 const Cuisine = () => {
 
@@ -28,28 +29,36 @@ const Cuisine = () => {
   }
 
   return (
-    <Box>
-      <Typography 
-        variant="h5" 
-        sx={{
-          marginY: '20px'
-        }}
-      >
-        {capsName(cuisineTitle)} Recipes
-      </Typography>
-      <Grid 
-        container 
-        spacing={{ xs: 2, md: 3 }} 
-      >
-        {
-          cuisine.map((recipe) => (
-            <Grid item xs={12} sm={6} md={4} key={recipe.id}>
-              <RecipePreview recipe={recipe}/>
-            </Grid>
-          ))
-        }
-      </Grid>
-    </Box>
+    <>
+      {
+        cuisine ? (
+        <Box>
+          <Typography 
+            variant="h5" 
+            sx={{
+              marginY: '20px'
+            }}
+          >
+            {capsName(cuisineTitle)} Recipes
+          </Typography>
+          <Grid 
+            container 
+            spacing={{ xs: 2, md: 3 }} 
+          >
+            {
+              cuisine.map((recipe) => (
+                <Grid item xs={12} sm={6} md={4} key={recipe.id}>
+                  <RecipePreview recipe={recipe}/>
+                </Grid>
+              ))
+            }
+          </Grid>
+        </Box>
+        ) : (
+          <ErrorMsg />
+        )
+      }
+    </>
   )
 }
 
