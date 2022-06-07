@@ -1,3 +1,27 @@
+# Max’s notes:
+To run this locally, you need to create a .env file in the root and sign up for a free API key from Spoonacular (https://spoonacular.com/food-api). Once you have this, add the following to the .env file:
+REACT_APP_API_KEY= yourSpoonacularKey
+
+## A live version of this site can be found at 
+https://symphonious-cajeta-e4c1d8.netlify.app/
+
+(07/06/22 - not currently working - API call issue. App can only be run locally at this point.)
+
+## Local storage
+This application also uses local storage. As the free tier of Spoonacular’s API has a limit of 150 requests per day, I implemented a local storage function to reduce the number of API calls. This will mean that the same results appear every time the home page and cuisine pages are refreshed. To remove this from your local storage:
+In your browser, go to Developer Tools > 
+Application >
+Storage >
+Local Storage >
+(url of site) >
+Right click on each of the options to delete. 
+If the number of daily requests has been exceeded, an error message will appear on-screen. 
+
+## Reflections:
+The API had a few limitations in the data that could consistently be called (eg, every recipe lists a cooking time of 45 minutes). It would have been nice to include a recipe summary, but these varied so much in their length and format that it looked terrible. This was also true of the instructions and ingredients. There may be some inconsistencies on the recipe detail page, but I’ve done my best to standardise these. Some of the cuisines described in the docs were also missing. 
+For styling, I used Material UI and React-Splide (as carousels were not a feature of MUI at time of writing). This also made it much easier to make this app mobile-friendly. 
+I also began a create-your-own recipes feature, which would list user-created recipes on the home page alongside existing data, using context API. But it proved difficult to make this interact in the same way as the components built with API data, and this also would have required significant upheaval of the routing setup, which I was not prepared/able to do. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
