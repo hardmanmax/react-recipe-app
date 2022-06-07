@@ -79,7 +79,7 @@ const Recipe = () => {
 
           {activeTab === "Instructions" && (
             <div style={{margin: "20px"}}>
-                <Typography variant="p" dangerouslySetInnerHTML={{__html: details.instructions}}/>
+                <Typography variant="p" dangerouslySetInnerHTML={{__html: details.instructions.split(".").join(".<br />")}}/>
             </div>
           )}
 
