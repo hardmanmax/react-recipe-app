@@ -10,17 +10,17 @@ const VeganRecipes = () => {
 
   const getVeganRecipes = async()=> {
 
-    const local = localStorage.getItem("Vegan recipes");
+    // const local = localStorage.getItem("Vegan recipes");
 
-    if (local){
-      setVeganRecipes(JSON.parse(local))
-    } else {
+    // if (local){
+    //   setVeganRecipes(JSON.parse(local))
+    // } else {
       const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegan`);
       const data = await response.json();
       //console.log(data.recipes);
       setVeganRecipes(data.recipes); 
-      localStorage.setItem("Vegan recipes", JSON.stringify(data.recipes))      
-    }
+      // localStorage.setItem("Vegan recipes", JSON.stringify(data.recipes))      
+    // }
   };
 
   useEffect(() => {
