@@ -5,8 +5,6 @@ REACT_APP_API_KEY= yourSpoonacularKey
 ## A live version of this site can be found at 
 https://symphonious-cajeta-e4c1d8.netlify.app/
 
-(07/06/22 - not currently working - API call issue. App can only be run locally at this point.)
-
 ## Local storage
 This application also uses local storage. As the free tier of Spoonacular’s API has a limit of 150 requests per day, I implemented a local storage function to reduce the number of API calls. This will mean that the same results appear every time the home page and cuisine pages are refreshed. To remove this from your local storage:
 In your browser, go to Developer Tools > 
